@@ -1,0 +1,199 @@
+:root {
+    --main-color: #000000;
+    --color1: #ffff00;
+    --color2: #ffffff;
+    --color3: #0A0C0D;
+
+}
+
+@keyframes showLeagueModal {
+    0% {
+        visibility: hidden;
+        opacity: 0;
+        transform: translate(-50%, 50%)
+    }
+
+    100% {
+        visibility: visible;
+        opacity: 1;
+        transform: translate(-50%, -50%)
+    }
+}
+
+@keyframes hiddenLeagueModal {
+    0% {
+        visibility: visible;
+        opacity: 1;
+        transform: translate(-50%, -50%)
+    }
+
+    100% {
+        visibility: hidden;
+        opacity: 0;
+        transform: translate(-50%, 50%)
+    }
+}
+
+/* @keyframes rotate {
+    from{
+        transform: rotateZ('45deg');
+    }
+    to
+} */
+
+body {
+    background-color: var(--main-color) !important;
+    color: var(--color2) !important;
+    margin: 0px;
+    padding: 0px;
+}
+
+header {
+    background-image: url(./images/Lionel\ Messi.jpeg), url(./images/cristeano.jpeg);
+    background-position: left, right;
+    background-size: 50%;
+    background-attachment: local;
+    background-repeat: no-repeat;
+    height: 15rem;
+}
+
+.nav {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#select-league {
+    margin-left: 2rem;
+    cursor: pointer;
+}
+
+main {
+    position: relative;
+}
+
+/* Style's days */
+#days {
+    color: var(--color2);
+    display: flex;
+    align-items: center;
+    overflow: auto;
+    margin: 3rem;
+    text-align: center;
+}
+
+
+.day {
+    margin-left: 1.5rem;
+    padding: 5px;
+
+}
+
+.day h6 {
+    text-align: center;
+}
+
+.day:hover {
+    cursor: pointer;
+}
+
+#selected {
+    color: var(--color1) !important;
+    border: var(--color1) solid 3px;
+    border-radius: 10px;
+
+}
+
+::-webkit-scrollbar {
+    visibility: hidden;
+}
+
+.month-year-div {
+    color: rgba(193, 188, 188, 0.71);
+    margin: 0px 0rem 0px 1rem;
+}
+
+.month-year-div p {
+    margin-bottom: 0px;
+}
+
+.month-year-div:hover {
+    cursor: pointer;
+}
+
+/*// Style's days //*/
+
+/* matches start */
+.logo-league {
+    height: 50px;
+    background-color: var(--color2);
+    /* background-color: white; */
+    border-radius: 10px;
+    width: 4rem;
+    height: 3rem;
+    margin-right: 0.5rem;
+}
+
+.cardMatche {
+    /* margin-bottom: 2rem; */
+    background-color: #ffffff2b;
+    border: white solid 1px;
+    padding: 1rem;
+    border-radius: 30px;
+    transition: box-shadow 0.4s;
+}
+
+.cardMatche:hover {
+    box-shadow: white 2px 2px 10px;
+    cursor: pointer;
+}
+
+/* matches end */
+
+/* modal list start */
+#leagueslist {
+    background-color: var(--main-color);
+    height: 90%;
+    width: 100%;
+    position: fixed;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    visibility: hidden;
+    overflow: auto;
+    padding-bottom: 100px;
+}
+
+#headerListLeauge {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.league {
+    background-color: transparent;
+    color: var(--color2);
+    max-width: 500px;
+    transition: color 0.4s;
+}
+
+.league:hover {
+    background-color: var(--main-color);
+    color: var(--color1);
+    cursor: pointer;
+}
+
+.downArrow {
+    height: 20px;
+    margin-bottom: 7px;
+}
+
+.downArrow:hover {
+    transform: rotateZ(90deg);
+}
+
+/* modal list end */
