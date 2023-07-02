@@ -143,7 +143,7 @@ const months = ["January", "February", "March", "April", "May", "June", "July", 
 function getTodaymatches() {
 
     document.getElementById("matches").innerHTML = ''
-    const url = `${baseUrl}/matches`
+    const url = `${baseUrl}/matches?dateFrom=2023-03-10&dateTo=2023-03-14`
     axios.get(url, {
         headers: {
             "X-Auth-Token": token

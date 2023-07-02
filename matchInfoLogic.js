@@ -18,7 +18,17 @@ function getInfoMatch() {
         console.log(response.data)
         let info = response.data
 
-
+        function checkRefree() {
+            let check = (info.referees !== "") ? "Hi" : "hell"
+            return check
+            // if (info.referees !== []) {
+            //     return `<p style="color: var(--color1);">null </p>`
+            //     // return "HI"
+            // } else {
+            //     return `<p style="color: var(--color1);">${info.referees[0].name}<span>((${info.referees[0].nationality}))</span></p>`
+            //     // return "Hello"
+            // }
+        }
         let content =
             `
         <!-- Match Result -->
@@ -51,7 +61,7 @@ function getInfoMatch() {
 
 
                 <div class="cardsInfo">
-                    <div id="compe" class="d-flex ms-4 mt-3">
+                    <div id="compe" class="d-flex mt-3">
                         <div class="">
                             <img src="${info.competition.emblem}" alt="" srcset="" class="logo-league">
                         </div>
@@ -64,7 +74,7 @@ function getInfoMatch() {
                 </div>
 
                 <div class="cardsInfo">
-                    <div id="referee" class="d-flex ms-4 mt-3">
+                    <div id="referee" class="d-flex mt-3">
                         <div class="">
                             <img src="./images/icons8-referee-jersey-64.png" alt="" srcset="" class="logo-league"
                                 style="background: none;">
@@ -72,13 +82,13 @@ function getInfoMatch() {
 
                         <div class="ms-2">
                             <h4 style="margin-bottom: 0px;">Referee</h4>
-                            <p style="color: var(--color1);">${info.referees[0].name}<span>((${info.referees[0].nationality || "Unknownn"}))</span></p>
+                            <p style="color: var(--color1);">${(info.referees != "") ? info.referees[0].name : "Null"}<span>((${(info.referees != "") ? info.referees[0].nationality : ""}))</span></p>
                         </div>
                     </div>
                 </div>
 
                 <div class="cardsInfo">
-                    <div id="stadium" class="d-flex ms-4 mt-3">
+                    <div id="stadium" class="d-flex mt-3">
                         <div class="">
                             <img src="./images/icons8-stadium-64.png" alt="" srcset="" class="logo-league"
                                 style="background: none;">

@@ -10,7 +10,8 @@ main {
 }
 
 .cardsInfo {
-    /* display: flex; */
+    display: flex;
+    flex-wrap: wrap;
 }
 
 #headTOhead {
