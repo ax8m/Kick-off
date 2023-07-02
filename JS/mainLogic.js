@@ -26,7 +26,7 @@ const token = '848a194d370a42178ed8291ff7755128'
 //                     <span class="title-league" style="font-size: 25px;">
 //                     ${match.competition.name}
 //                     </span>
-//                     <img src="./images/icons8-more-than-90.png" alt="" style="height: 20px; margin-bottom: 7px;">
+//                     <img src="../images/icons8-more-than-90.png" alt="" style="height: 20px; margin-bottom: 7px;">
 //                     </div>
 //                     `
 
@@ -84,7 +84,7 @@ const token = '848a194d370a42178ed8291ff7755128'
 //                             <span class="title-league" style="font-size: 25px;">
 //                             ${match.competition.name}
 //                             </span>
-//                             <img src="./images/icons8-more-than-90.png" alt="" style="height: 20px; margin-bottom: 7px;">
+//                             <img src="../images/icons8-more-than-90.png" alt="" style="height: 20px; margin-bottom: 7px;">
 //                             </div>
 //                             `
 
@@ -193,7 +193,7 @@ function getTodaymatches() {
                             <span class="title-league" style="font-size: 25px;">
                                 ${match.competition.name}
                             </span>
-                            <img src="./images/icons8-more-than-90.png" alt="" style="height: 20px; margin-bottom: 7px;">
+                            <img src="../images/icons8-more-than-90.png" alt="" style="height: 20px; margin-bottom: 7px;">
                         </div>
 
                 <div class="row mt-4 d-flex justify-content-center" onclick="MatchClicked(${match.id})" >
@@ -300,7 +300,7 @@ function showLeagues(stute) {
                         <span class="title-league" style="font-size: 25px;" onclick="window.location = 'League.html'">
                             ${competition.name}
                         </span>
-                        <img src="./images/icons8-more-than-90.png" alt="" style="height: 20px; margin-bottom: 7px;">
+                        <img src="../images/icons8-more-than-90.png" alt="" style="height: 20px; margin-bottom: 7px;">
                 </div>
                 
                 `

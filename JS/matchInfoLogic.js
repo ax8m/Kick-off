@@ -76,7 +76,7 @@ function getInfoMatch() {
                 <div class="cardsInfo">
                     <div id="referee" class="d-flex mt-3">
                         <div class="">
-                            <img src="./images/icons8-referee-jersey-64.png" alt="" srcset="" class="logo-league"
+                            <img src="../images/icons8-referee-jersey-64.png" alt="" srcset="" class="logo-league"
                                 style="background: none;">
                         </div>
 
@@ -90,7 +90,7 @@ function getInfoMatch() {
                 <div class="cardsInfo">
                     <div id="stadium" class="d-flex mt-3">
                         <div class="">
-                            <img src="./images/icons8-stadium-64.png" alt="" srcset="" class="logo-league"
+                            <img src="../images/icons8-stadium-64.png" alt="" srcset="" class="logo-league"
                                 style="background: none;">
                         </div>
 
