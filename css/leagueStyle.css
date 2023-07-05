@@ -4,6 +4,8 @@
     /* grid-template-rows: 20% 80%; */
 }
 
+/* <!-- ====== This Style for Leagues compitions (Start)======= --> */
+
 #mainContent {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -23,14 +25,23 @@
     align-items: center;
 }
 
+/* <!-- ====== This design for Leagues compitions (End)======= --> */
+
+#topScorer {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 2.5rem;
+}
+
+
 table {
     margin: 1rem auto;
     width: 70%;
     /* background-color: blue !important; */
     background-color: #ffffff2b;
     box-shadow: white 2px 2px 10px;
-
-
+    text-align: center;
 }
 
 table,
@@ -45,12 +56,6 @@ th {
 }
 
 
-#topScorer {
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-
-}
 
 #header img {
     width: 5rem;
@@ -62,4 +67,23 @@ th {
 .fliter {
     display: flex;
     justify-content: space-evenly;
+}
+
+
+/* Cups style */
+#cups {
+    margin: 2.5rem;
+}
+
+#groubs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 5px;
+    text-align: center;
+}
+
+@media only screen and (max-width: 768px) {
+    #groubs {
+        grid-template-columns: auto;
+    }
 }

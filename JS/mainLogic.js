@@ -169,7 +169,7 @@ function getTodaymatches() {
 
                 if (status == "TIMED") {
                     return `
-                    <h3>${date}</h3>
+                    <h2>${date}</h2>
                     <h4 style="color: var(--color1);">${time}</h4>
                     `
                 } else if (status == "PAUSED") {
@@ -188,7 +188,7 @@ function getTodaymatches() {
 
             let content = `
              <div class="mb-5">
-                        <div>
+                        <div onclick="window.location = 'League.html?leagueId=${match.competition.id}'" style="cursor: pointer;">
                             <img src="${match.competition.emblem}" alt="" srcset="" class="logo-league">
                             <span class="title-league" style="font-size: 25px;">
                                 ${match.competition.name}
@@ -297,7 +297,7 @@ function showLeagues(stute) {
                 let content = `
                 <div class="league mt-5">
                         <img src="${competition.emblem}" alt="" srcset="" class="logo-league">
-                        <span class="title-league" style="font-size: 25px;" onclick="window.location = 'League.html'">
+                        <span class="title-league" style="font-size: 25px;" onclick="window.location = 'League.html?leagueId=${competition.id}'">
                             ${competition.name}
                         </span>
                         <img src="../images/icons8-more-than-90.png" alt="" style="height: 20px; margin-bottom: 7px;">
@@ -308,4 +308,11 @@ function showLeagues(stute) {
                 document.getElementById("leagues").innerHTML += content
             }
         })
+}
+
+// get id of url search
+function getCurrentId(paramID) {
+    const urlParams = new URLSearchParams(window.location.search)
+    const matchId = urlParams.get(paramID)
+    return matchId
 }

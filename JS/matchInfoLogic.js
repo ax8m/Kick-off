@@ -1,12 +1,7 @@
 
-function getCurrentUserId() {
-    const urlParams = new URLSearchParams(window.location.search)
-    const matchId = urlParams.get("matchId")
-    return matchId
-}
 
 function getInfoMatch() {
-    const id = getCurrentUserId()
+    const id = getCurrentId("matchId")
     document.getElementById("main").innerHTML = " "
     const url = `${baseUrl}/matches/${id}`
     axios.get(url, {
@@ -14,8 +9,6 @@ function getInfoMatch() {
             "X-Auth-Token": token
         }
     }).then((response) => {
-
-        console.log(response.data)
         let info = response.data
 
         function checkRefree() {
@@ -41,6 +34,7 @@ function getInfoMatch() {
 
                 <div class="col-sm-6 d-flex flex-column align-items-center justify-content-center">
                     <h2>${matchStatus(info.status, info.utcDate, info)}</h2>
+                    <h6 style="color:var(--color1);">MATCHDAY : ${info.season.currentMatchday}</h6>
                 </div>
 
                 <div class="col-sm-3 d-flex flex-column align-items-center">
@@ -114,12 +108,12 @@ function getInfoMatch() {
 
     })
 
-    getInfoHead2Head()
+
 }
 
 function getInfoHead2Head() {
 
-    const id = getCurrentUserId()
+    const id = getCurrentId("matchId")
     const url = `${baseUrl}/matches/${id}/head2head`
     axios.get(url, {
         headers: {
@@ -188,6 +182,7 @@ function getInfoHead2Head() {
 
     })
 }
+
 function matchStatus(status, utcDate, variable) {
     // GET DATE & TIME
     utcDate = new Date(utcDate)

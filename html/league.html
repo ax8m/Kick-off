@@ -21,14 +21,18 @@
 
     <!-- Axios -->
     <script src="../node_modules/axios/dist/axios.min.js"></script>
+
+    <!-- Jquery -->
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
     <!--// Library //-->
+
 </head>
 
 <body>
     <main id="main">
         <div id="header">
-            <div>
-                <img src="../images/logo football.png" alt="" style="" class="logo-league">
+            <div id="logoLeaguePage">
+                <img src="" alt="" style="" class="logo-league">
             </div>
 
             <div class="fliter">
@@ -55,11 +59,185 @@
         </div>
 
 
-        <div id="mainContent" style="">
+        <!-- ====== This design for Leagues compitions (Start)======= -->
+        <div id="leagueDesign">
+            <div id="mainContent">
 
-            <div id="standing">
-                <div class="">
+                <div id="standing">
+                    <hr>
+                    <h2 style="text-align: center;">Standings</h2>
+                    <div class="">
+                        <table id="standingTable">
+                            <thead>
+                                <th>#</th>
+                                <th style="width: 30%;">Team</th>
+                                <th>Pl</th>
+                                <th style="color: greenyellow;">W</th>
+                                <th style="color: yellow;">D</th>
+                                <th style="color: red;">L</th>
+                                <th>F : A</th>
+                                <th>GD</th>
+                                <th>Pts</th>
+                            </thead>
+
+                            <tbody id="standingTeams">
+                                <td>1</td>
+                                <td>
+                                    <img src="../images/barca-logo.png" alt="" style="width: 1.7rem;">
+                                    <span>Barsha</span>
+                                </td>
+                                <td>30</td>
+                                <td style="color: greenyellow;">20</td>
+                                <td style="color: yellow;">5</td>
+                                <td style="color: red;">7</td>
+                                <td>43 : 40</td>
+                                <td>80</td>
+                                <td>86</td>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+                <div id="topScorer" style="margin: 0px;">
+                    <hr>
+                    <h2 style="text-align: center;">Top Scroer</h2>
                     <table>
+                        <thead>
+                            <th>#</th>
+                            <th>Player</th>
+                            <th>Club</th>
+                            <th>Goals(P)</th>
+                            <th>Assists</th>
+                            <th>Matches</th>
+                        </thead>
+
+                        <tbody id="standingScroer">
+                            <td>1</td>
+                            <td>
+                                <img src="../images/barca-logo.png" alt="" style="width: 1.7rem;">
+                                <span>Barsha</span>
+                            </td>
+                            <td>30</td>
+                            <td style="color: greenyellow;">20</td>
+                            <td style="color: yellow;">5</td>
+                            <td style="color: red;">7</td>
+                            <td>43 : 40</td>
+                            <td>80</td>
+                            <td>86</td>
+                        </tbody>
+
+
+                    </table>
+                </div>
+            </div>
+
+
+            <div id="compitionMatches" style="margin: 0px 40px;">
+                <hr>
+                <h2 style="text-align: center;">Matches</h2>
+
+                <div class="mb-5" id="compitionMatchesCards">
+
+                    <div class="row mt-4 d-flex justify-content-center">
+                        <div class="cardMatche col-sm-10 d-flex">
+                            <div class="col-sm-3 d-flex flex-column align-items-center ">
+                                <img src="../images/barca-logo.png" alt="" class="logo-team mb-1" style="height: 60px;">
+                                <h6>BARCLONA</h6>
+                            </div>
+
+                            <div class="col-sm-6 d-flex flex-column align-items-center justify-content-center">
+                                <h3>MARCH 15</h3>
+                                <h6 style="color: var(--color1);">22:30</h6>
+                                <h6></h6>
+                            </div>
+
+                            <div class="col-sm-3 d-flex flex-column align-items-center">
+                                <img src="../images/real-madrid-logo.png" alt="" class="logo-team mb-1"
+                                    style="height: 60px;">
+                                <h6>REAL MADRID</h6>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-4 d-flex justify-content-center">
+                        <div class="cardMatche col-sm-10 d-flex">
+                            <div class="col-sm-3 d-flex flex-column align-items-center ">
+                                <img src="../images/barca-logo.png" alt="" class="logo-team mb-1" style="height: 60px;">
+                                <h6>BARCLONA</h6>
+                            </div>
+
+                            <div class="col-sm-6 d-flex flex-column align-items-center justify-content-center">
+                                <h3>MARCH 15</h3>
+                                <h6 style="color: var(--color1);">22:30</h6>
+                            </div>
+
+                            <div class="col-sm-3 d-flex flex-column align-items-center">
+                                <img src="../images/real-madrid-logo.png" alt="" class="logo-team mb-1"
+                                    style="height: 60px;">
+                                <h6>REAL MADRID</h6>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-4 d-flex justify-content-center">
+                        <div class="cardMatche col-sm-10 d-flex">
+                            <div class="col-sm-3 d-flex flex-column align-items-center ">
+                                <img src="../images/barca-logo.png" alt="" class="logo-team mb-1" style="height: 60px;">
+                                <h6>BARCLONA</h6>
+                            </div>
+
+                            <div class="col-sm-6 d-flex flex-column align-items-center justify-content-center">
+                                <h3>MARCH 15</h3>
+                                <h6 style="color: var(--color1);">22:30</h6>
+                            </div>
+
+                            <div class="col-sm-3 d-flex flex-column align-items-center">
+                                <img src="../images/real-madrid-logo.png" alt="" class="logo-team mb-1"
+                                    style="height: 60px;">
+                                <h6>REAL MADRID</h6>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-4 d-flex justify-content-center">
+                        <div class="cardMatche col-sm-10 d-flex">
+                            <div class="col-sm-3 d-flex flex-column align-items-center ">
+                                <img src="../images/barca-logo.png" alt="" class="logo-team mb-1" style="height: 60px;">
+                                <h6>BARCLONA</h6>
+                            </div>
+
+                            <div class="col-sm-6 d-flex flex-column align-items-center justify-content-center">
+                                <h3>MARCH 15</h3>
+                                <h6 style="color: var(--color1);">22:30</h6>
+                            </div>
+
+                            <div class="col-sm-3 d-flex flex-column align-items-center">
+                                <img src="../images/real-madrid-logo.png" alt="" class="logo-team mb-1"
+                                    style="height: 60px;">
+                                <h6>REAL MADRID</h6>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+        </div>
+
+
+        <!-- ====== This design for Leagues compitions (End)======= -->
+
+        <!-- ====== This design for Leagues compitions (Start)======= -->
+        <div id="cups">
+            <hr>
+            <h2 style="text-align: center;">Standings</h2>
+            <div id="groubs">
+                <div>
+                    <table>
+                        <h4>Groub A</h4>
                         <tr>
                             <th>#</th>
                             <th style="width: 30%;">Team</th>
@@ -128,32 +306,22 @@
                             <td>80</td>
                             <td>86</td>
                         </tr>
+                    </table>
+                </div>
 
+                <div>
+                    <table>
+                        <h4>Groub A</h4>
                         <tr>
-                            <td>1</td>
-                            <td>
-                                <img src="../images/real-madrid-logo.png" alt="" style="width: 1.7rem;">
-                                <span>Real madrid</span>
-                            </td>
-                            <td>30</td>
-                            <td style="color: greenyellow;">20</td>
-                            <td style="color: yellow;">5</td>
-                            <td style="color: red;">7</td>
-                            <td>43 : 40</td>
-                            <td>80</td>
-                            <td>86</td>
-                        </tr>
-
-                        <tr>
-                            <td>1</td>
-                            <td>Barsha</td>
-                            <td>30</td>
-                            <td style="color: greenyellow;">20</td>
-                            <td style="color: yellow;">5</td>
-                            <td style="color: red;">7</td>
-                            <td>43 : 40</td>
-                            <td>80</td>
-                            <td>86</td>
+                            <th>#</th>
+                            <th style="width: 30%;">Team</th>
+                            <th>Pl</th>
+                            <th style="color: greenyellow;">W</th>
+                            <th style="color: yellow;">D</th>
+                            <th style="color: red;">L</th>
+                            <th>F : A</th>
+                            <th>GD</th>
+                            <th>Pts</th>
                         </tr>
 
                         <tr>
@@ -204,159 +372,6 @@
                                 <img src="../images/barca-logo.png" alt="" style="width: 1.7rem;">
                                 <span>Barsha</span>
                             </td>
-                            <td>30</td>
-                            <td style="color: greenyellow;">20</td>
-                            <td style="color: yellow;">5</td>
-                            <td style="color: red;">7</td>
-                            <td>43 : 40</td>
-                            <td>80</td>
-                            <td>86</td>
-                        </tr>
-
-                        <tr>
-                            <td>1</td>
-                            <td>
-                                <img src="../images/real-madrid-logo.png" alt="" style="width: 1.7rem;">
-                                <span>Real madrid</span>
-                            </td>
-                            <td>30</td>
-                            <td style="color: greenyellow;">20</td>
-                            <td style="color: yellow;">5</td>
-                            <td style="color: red;">7</td>
-                            <td>43 : 40</td>
-                            <td>80</td>
-                            <td>86</td>
-                        </tr>
-
-                        <tr>
-                            <td>1</td>
-                            <td>Barsha</td>
-                            <td>30</td>
-                            <td style="color: greenyellow;">20</td>
-                            <td style="color: yellow;">5</td>
-                            <td style="color: red;">7</td>
-                            <td>43 : 40</td>
-                            <td>80</td>
-                            <td>86</td>
-                        </tr>
-
-                        <tr>
-                            <td>1</td>
-                            <td>
-                                <img src="../images/barca-logo.png" alt="" style="width: 1.7rem;">
-                                <span>Barsha</span>
-                            </td>
-                            <td>30</td>
-                            <td style="color: greenyellow;">20</td>
-                            <td style="color: yellow;">5</td>
-                            <td style="color: red;">7</td>
-                            <td>43 : 40</td>
-                            <td>80</td>
-                            <td>86</td>
-                        </tr>
-
-                        <tr>
-                            <td>1</td>
-                            <td>
-                                <img src="../images/real-madrid-logo.png" alt="" style="width: 1.7rem;">
-                                <span>Real madrid</span>
-                            </td>
-                            <td>30</td>
-                            <td style="color: greenyellow;">20</td>
-                            <td style="color: yellow;">5</td>
-                            <td style="color: red;">7</td>
-                            <td>43 : 40</td>
-                            <td>80</td>
-                            <td>86</td>
-                        </tr>
-
-                        <tr>
-                            <td>1</td>
-                            <td>Barsha</td>
-                            <td>30</td>
-                            <td style="color: greenyellow;">20</td>
-                            <td style="color: yellow;">5</td>
-                            <td style="color: red;">7</td>
-                            <td>43 : 40</td>
-                            <td>80</td>
-                            <td>86</td>
-                        </tr>
-
-                        <tr>
-                            <td>1</td>
-                            <td>
-                                <img src="../images/barca-logo.png" alt="" style="width: 1.7rem;">
-                                <span>Barsha</span>
-                            </td>
-                            <td>30</td>
-                            <td style="color: greenyellow;">20</td>
-                            <td style="color: yellow;">5</td>
-                            <td style="color: red;">7</td>
-                            <td>43 : 40</td>
-                            <td>80</td>
-                            <td>86</td>
-                        </tr>
-
-                        <tr>
-                            <td>1</td>
-                            <td>
-                                <img src="../images/real-madrid-logo.png" alt="" style="width: 1.7rem;">
-                                <span>Real madrid</span>
-                            </td>
-                            <td>30</td>
-                            <td style="color: greenyellow;">20</td>
-                            <td style="color: yellow;">5</td>
-                            <td style="color: red;">7</td>
-                            <td>43 : 40</td>
-                            <td>80</td>
-                            <td>86</td>
-                        </tr>
-
-                        <tr>
-                            <td>1</td>
-                            <td>Barsha</td>
-                            <td>30</td>
-                            <td style="color: greenyellow;">20</td>
-                            <td style="color: yellow;">5</td>
-                            <td style="color: red;">7</td>
-                            <td>43 : 40</td>
-                            <td>80</td>
-                            <td>86</td>
-                        </tr>
-
-                        <tr>
-                            <td>1</td>
-                            <td>
-                                <img src="../images/barca-logo.png" alt="" style="width: 1.7rem;">
-                                <span>Barsha</span>
-                            </td>
-                            <td>30</td>
-                            <td style="color: greenyellow;">20</td>
-                            <td style="color: yellow;">5</td>
-                            <td style="color: red;">7</td>
-                            <td>43 : 40</td>
-                            <td>80</td>
-                            <td>86</td>
-                        </tr>
-
-                        <tr>
-                            <td>1</td>
-                            <td>
-                                <img src="../images/real-madrid-logo.png" alt="" style="width: 1.7rem;">
-                                <span>Real madrid</span>
-                            </td>
-                            <td>30</td>
-                            <td style="color: greenyellow;">20</td>
-                            <td style="color: yellow;">5</td>
-                            <td style="color: red;">7</td>
-                            <td>43 : 40</td>
-                            <td>80</td>
-                            <td>86</td>
-                        </tr>
-
-                        <tr>
-                            <td>1</td>
-                            <td>Barsha</td>
                             <td>30</td>
                             <td style="color: greenyellow;">20</td>
                             <td style="color: yellow;">5</td>
@@ -367,10 +382,456 @@
                         </tr>
                     </table>
                 </div>
-            </div>
 
+                <div>
+                    <table>
+                        <h4>Groub A</h4>
+                        <tr>
+                            <th>#</th>
+                            <th style="width: 30%;">Team</th>
+                            <th>Pl</th>
+                            <th style="color: greenyellow;">W</th>
+                            <th style="color: yellow;">D</th>
+                            <th style="color: red;">L</th>
+                            <th>F : A</th>
+                            <th>GD</th>
+                            <th>Pts</th>
+                        </tr>
+
+                        <tr>
+                            <td>1</td>
+                            <td>
+                                <img src="../images/barca-logo.png" alt="" style="width: 1.7rem;">
+                                <span>Barsha</span>
+                            </td>
+                            <td>30</td>
+                            <td style="color: greenyellow;">20</td>
+                            <td style="color: yellow;">5</td>
+                            <td style="color: red;">7</td>
+                            <td>43 : 40</td>
+                            <td>80</td>
+                            <td>86</td>
+                        </tr>
+
+                        <tr>
+                            <td>1</td>
+                            <td>
+                                <img src="../images/real-madrid-logo.png" alt="" style="width: 1.7rem;">
+                                <span>Real madrid</span>
+                            </td>
+                            <td>30</td>
+                            <td style="color: greenyellow;">20</td>
+                            <td style="color: yellow;">5</td>
+                            <td style="color: red;">7</td>
+                            <td>43 : 40</td>
+                            <td>80</td>
+                            <td>86</td>
+                        </tr>
+
+                        <tr>
+                            <td>1</td>
+                            <td>Barsha</td>
+                            <td>30</td>
+                            <td style="color: greenyellow;">20</td>
+                            <td style="color: yellow;">5</td>
+                            <td style="color: red;">7</td>
+                            <td>43 : 40</td>
+                            <td>80</td>
+                            <td>86</td>
+                        </tr>
+
+                        <tr>
+                            <td>1</td>
+                            <td>
+                                <img src="../images/barca-logo.png" alt="" style="width: 1.7rem;">
+                                <span>Barsha</span>
+                            </td>
+                            <td>30</td>
+                            <td style="color: greenyellow;">20</td>
+                            <td style="color: yellow;">5</td>
+                            <td style="color: red;">7</td>
+                            <td>43 : 40</td>
+                            <td>80</td>
+                            <td>86</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div>
+                    <table>
+                        <h4>Groub A</h4>
+                        <tr>
+                            <th>#</th>
+                            <th style="width: 30%;">Team</th>
+                            <th>Pl</th>
+                            <th style="color: greenyellow;">W</th>
+                            <th style="color: yellow;">D</th>
+                            <th style="color: red;">L</th>
+                            <th>F : A</th>
+                            <th>GD</th>
+                            <th>Pts</th>
+                        </tr>
+
+                        <tr>
+                            <td>1</td>
+                            <td>
+                                <img src="../images/barca-logo.png" alt="" style="width: 1.7rem;">
+                                <span>Barsha</span>
+                            </td>
+                            <td>30</td>
+                            <td style="color: greenyellow;">20</td>
+                            <td style="color: yellow;">5</td>
+                            <td style="color: red;">7</td>
+                            <td>43 : 40</td>
+                            <td>80</td>
+                            <td>86</td>
+                        </tr>
+
+                        <tr>
+                            <td>1</td>
+                            <td>
+                                <img src="../images/real-madrid-logo.png" alt="" style="width: 1.7rem;">
+                                <span>Real madrid</span>
+                            </td>
+                            <td>30</td>
+                            <td style="color: greenyellow;">20</td>
+                            <td style="color: yellow;">5</td>
+                            <td style="color: red;">7</td>
+                            <td>43 : 40</td>
+                            <td>80</td>
+                            <td>86</td>
+                        </tr>
+
+                        <tr>
+                            <td>1</td>
+                            <td>Barsha</td>
+                            <td>30</td>
+                            <td style="color: greenyellow;">20</td>
+                            <td style="color: yellow;">5</td>
+                            <td style="color: red;">7</td>
+                            <td>43 : 40</td>
+                            <td>80</td>
+                            <td>86</td>
+                        </tr>
+
+                        <tr>
+                            <td>1</td>
+                            <td>
+                                <img src="../images/barca-logo.png" alt="" style="width: 1.7rem;">
+                                <span>Barsha</span>
+                            </td>
+                            <td>30</td>
+                            <td style="color: greenyellow;">20</td>
+                            <td style="color: yellow;">5</td>
+                            <td style="color: red;">7</td>
+                            <td>43 : 40</td>
+                            <td>80</td>
+                            <td>86</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div>
+                    <table>
+                        <h4>Groub A</h4>
+                        <tr>
+                            <th>#</th>
+                            <th style="width: 30%;">Team</th>
+                            <th>Pl</th>
+                            <th style="color: greenyellow;">W</th>
+                            <th style="color: yellow;">D</th>
+                            <th style="color: red;">L</th>
+                            <th>F : A</th>
+                            <th>GD</th>
+                            <th>Pts</th>
+                        </tr>
+
+                        <tr>
+                            <td>1</td>
+                            <td>
+                                <img src="../images/barca-logo.png" alt="" style="width: 1.7rem;">
+                                <span>Barsha</span>
+                            </td>
+                            <td>30</td>
+                            <td style="color: greenyellow;">20</td>
+                            <td style="color: yellow;">5</td>
+                            <td style="color: red;">7</td>
+                            <td>43 : 40</td>
+                            <td>80</td>
+                            <td>86</td>
+                        </tr>
+
+                        <tr>
+                            <td>1</td>
+                            <td>
+                                <img src="../images/real-madrid-logo.png" alt="" style="width: 1.7rem;">
+                                <span>Real madrid</span>
+                            </td>
+                            <td>30</td>
+                            <td style="color: greenyellow;">20</td>
+                            <td style="color: yellow;">5</td>
+                            <td style="color: red;">7</td>
+                            <td>43 : 40</td>
+                            <td>80</td>
+                            <td>86</td>
+                        </tr>
+
+                        <tr>
+                            <td>1</td>
+                            <td>Barsha</td>
+                            <td>30</td>
+                            <td style="color: greenyellow;">20</td>
+                            <td style="color: yellow;">5</td>
+                            <td style="color: red;">7</td>
+                            <td>43 : 40</td>
+                            <td>80</td>
+                            <td>86</td>
+                        </tr>
+
+                        <tr>
+                            <td>1</td>
+                            <td>
+                                <img src="../images/barca-logo.png" alt="" style="width: 1.7rem;">
+                                <span>Barsha</span>
+                            </td>
+                            <td>30</td>
+                            <td style="color: greenyellow;">20</td>
+                            <td style="color: yellow;">5</td>
+                            <td style="color: red;">7</td>
+                            <td>43 : 40</td>
+                            <td>80</td>
+                            <td>86</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div>
+                    <table>
+                        <h4>Groub A</h4>
+                        <tr>
+                            <th>#</th>
+                            <th style="width: 30%;">Team</th>
+                            <th>Pl</th>
+                            <th style="color: greenyellow;">W</th>
+                            <th style="color: yellow;">D</th>
+                            <th style="color: red;">L</th>
+                            <th>F : A</th>
+                            <th>GD</th>
+                            <th>Pts</th>
+                        </tr>
+
+                        <tr>
+                            <td>1</td>
+                            <td>
+                                <img src="../images/barca-logo.png" alt="" style="width: 1.7rem;">
+                                <span>Barsha</span>
+                            </td>
+                            <td>30</td>
+                            <td style="color: greenyellow;">20</td>
+                            <td style="color: yellow;">5</td>
+                            <td style="color: red;">7</td>
+                            <td>43 : 40</td>
+                            <td>80</td>
+                            <td>86</td>
+                        </tr>
+
+                        <tr>
+                            <td>1</td>
+                            <td>
+                                <img src="../images/real-madrid-logo.png" alt="" style="width: 1.7rem;">
+                                <span>Real madrid</span>
+                            </td>
+                            <td>30</td>
+                            <td style="color: greenyellow;">20</td>
+                            <td style="color: yellow;">5</td>
+                            <td style="color: red;">7</td>
+                            <td>43 : 40</td>
+                            <td>80</td>
+                            <td>86</td>
+                        </tr>
+
+                        <tr>
+                            <td>1</td>
+                            <td>Barsha</td>
+                            <td>30</td>
+                            <td style="color: greenyellow;">20</td>
+                            <td style="color: yellow;">5</td>
+                            <td style="color: red;">7</td>
+                            <td>43 : 40</td>
+                            <td>80</td>
+                            <td>86</td>
+                        </tr>
+
+                        <tr>
+                            <td>1</td>
+                            <td>
+                                <img src="../images/barca-logo.png" alt="" style="width: 1.7rem;">
+                                <span>Barsha</span>
+                            </td>
+                            <td>30</td>
+                            <td style="color: greenyellow;">20</td>
+                            <td style="color: yellow;">5</td>
+                            <td style="color: red;">7</td>
+                            <td>43 : 40</td>
+                            <td>80</td>
+                            <td>86</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div>
+                    <table>
+                        <h4>Groub A</h4>
+                        <tr>
+                            <th>#</th>
+                            <th style="width: 30%;">Team</th>
+                            <th>Pl</th>
+                            <th style="color: greenyellow;">W</th>
+                            <th style="color: yellow;">D</th>
+                            <th style="color: red;">L</th>
+                            <th>F : A</th>
+                            <th>GD</th>
+                            <th>Pts</th>
+                        </tr>
+
+                        <tr>
+                            <td>1</td>
+                            <td>
+                                <img src="../images/barca-logo.png" alt="" style="width: 1.7rem;">
+                                <span>Barsha</span>
+                            </td>
+                            <td>30</td>
+                            <td style="color: greenyellow;">20</td>
+                            <td style="color: yellow;">5</td>
+                            <td style="color: red;">7</td>
+                            <td>43 : 40</td>
+                            <td>80</td>
+                            <td>86</td>
+                        </tr>
+
+                        <tr>
+                            <td>1</td>
+                            <td>
+                                <img src="../images/real-madrid-logo.png" alt="" style="width: 1.7rem;">
+                                <span>Real madrid</span>
+                            </td>
+                            <td>30</td>
+                            <td style="color: greenyellow;">20</td>
+                            <td style="color: yellow;">5</td>
+                            <td style="color: red;">7</td>
+                            <td>43 : 40</td>
+                            <td>80</td>
+                            <td>86</td>
+                        </tr>
+
+                        <tr>
+                            <td>1</td>
+                            <td>Barsha</td>
+                            <td>30</td>
+                            <td style="color: greenyellow;">20</td>
+                            <td style="color: yellow;">5</td>
+                            <td style="color: red;">7</td>
+                            <td>43 : 40</td>
+                            <td>80</td>
+                            <td>86</td>
+                        </tr>
+
+                        <tr>
+                            <td>1</td>
+                            <td>
+                                <img src="../images/barca-logo.png" alt="" style="width: 1.7rem;">
+                                <span>Barsha</span>
+                            </td>
+                            <td>30</td>
+                            <td style="color: greenyellow;">20</td>
+                            <td style="color: yellow;">5</td>
+                            <td style="color: red;">7</td>
+                            <td>43 : 40</td>
+                            <td>80</td>
+                            <td>86</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div>
+                    <table>
+                        <h4>Groub A</h4>
+                        <tr>
+                            <th>#</th>
+                            <th style="width: 30%;">Team</th>
+                            <th>Pl</th>
+                            <th style="color: greenyellow;">W</th>
+                            <th style="color: yellow;">D</th>
+                            <th style="color: red;">L</th>
+                            <th>F : A</th>
+                            <th>GD</th>
+                            <th>Pts</th>
+                        </tr>
+
+                        <tr>
+                            <td>1</td>
+                            <td>
+                                <img src="../images/barca-logo.png" alt="" style="width: 1.7rem;">
+                                <span>Barsha</span>
+                            </td>
+                            <td>30</td>
+                            <td style="color: greenyellow;">20</td>
+                            <td style="color: yellow;">5</td>
+                            <td style="color: red;">7</td>
+                            <td>43 : 40</td>
+                            <td>80</td>
+                            <td>86</td>
+                        </tr>
+
+                        <tr>
+                            <td>1</td>
+                            <td>
+                                <img src="../images/real-madrid-logo.png" alt="" style="width: 1.7rem;">
+                                <span>Real madrid</span>
+                            </td>
+                            <td>30</td>
+                            <td style="color: greenyellow;">20</td>
+                            <td style="color: yellow;">5</td>
+                            <td style="color: red;">7</td>
+                            <td>43 : 40</td>
+                            <td>80</td>
+                            <td>86</td>
+                        </tr>
+
+                        <tr>
+                            <td>1</td>
+                            <td>Barsha</td>
+                            <td>30</td>
+                            <td style="color: greenyellow;">20</td>
+                            <td style="color: yellow;">5</td>
+                            <td style="color: red;">7</td>
+                            <td>43 : 40</td>
+                            <td>80</td>
+                            <td>86</td>
+                        </tr>
+
+                        <tr>
+                            <td>1</td>
+                            <td>
+                                <img src="../images/barca-logo.png" alt="" style="width: 1.7rem;">
+                                <span>Barsha</span>
+                            </td>
+                            <td>30</td>
+                            <td style="color: greenyellow;">20</td>
+                            <td style="color: yellow;">5</td>
+                            <td style="color: red;">7</td>
+                            <td>43 : 40</td>
+                            <td>80</td>
+                            <td>86</td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+            <hr>
 
             <div id="topScorer">
+                <h2>Top Scorer</h2>
                 <table>
                     <tr>
                         <th>#</th>
@@ -464,103 +925,101 @@
 
                 </table>
             </div>
-        </div>
+            <hr>
 
-        <div id="matches" style="margin: 0px 40px;">
-            <div class="mb-5">
+            <div id="compitionMatches" style="margin: 0px 40px;">
+                <h2 style="text-align: center;">Matches</h2>
+                <div class="mb-5">
 
-                <div class="row mt-4 d-flex justify-content-center">
-                    <div class="cardMatche col-sm-10 d-flex">
-                        <div class="col-sm-3 d-flex flex-column align-items-center ">
-                            <img src="../images/barca-logo.png" alt="" class="logo-team mb-1" style="height: 60px;">
-                            <h6>BARCLONA</h6>
+                    <div>
+
+                        <div class="row mt-4 d-flex justify-content-center">
+                            <div class="cardMatche col-sm-10 d-flex">
+                                <div class="col-sm-3 d-flex flex-column align-items-center ">
+                                    <img src="../images/barca-logo.png" alt="" class="logo-team mb-1"
+                                        style="height: 60px;">
+                                    <h6>BARCLONA</h6>
+                                </div>
+
+                                <div class="col-sm-6 d-flex flex-column align-items-center justify-content-center">
+                                    <h3>MARCH 15</h3>
+                                    <h6 style="color: var(--color1);">22:30</h6>
+                                    <h6>Final</h6>
+                                </div>
+
+                                <div class="col-sm-3 d-flex flex-column align-items-center">
+                                    <img src="../images/real-madrid-logo.png" alt="" class="logo-team mb-1"
+                                        style="height: 60px;">
+                                    <h6>REAL MADRID</h6>
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="col-sm-6 d-flex flex-column align-items-center justify-content-center">
-                            <h3>MARCH 15</h3>
-                            <h6 style="color: var(--color1);">22:30</h6>
+                    </div>
+
+
+                    <div>
+
+                        <div class="row mt-4 d-flex justify-content-center">
+                            <div class="cardMatche col-sm-10 d-flex">
+                                <div class="col-sm-3 d-flex flex-column align-items-center ">
+                                    <img src="../images/barca-logo.png" alt="" class="logo-team mb-1"
+                                        style="height: 60px;">
+                                    <h6>BARCLONA</h6>
+                                </div>
+
+                                <div class="col-sm-6 d-flex flex-column align-items-center justify-content-center">
+                                    <h3>MARCH 15</h3>
+                                    <h6 style="color: var(--color1);">22:30</h6>
+                                    <h6>Sami-Final</h6>
+                                </div>
+
+                                <div class="col-sm-3 d-flex flex-column align-items-center">
+                                    <img src="../images/real-madrid-logo.png" alt="" class="logo-team mb-1"
+                                        style="height: 60px;">
+                                    <h6>REAL MADRID</h6>
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="col-sm-3 d-flex flex-column align-items-center">
-                            <img src="../images/real-madrid-logo.png" alt="" class="logo-team mb-1"
-                                style="height: 60px;">
-                            <h6>REAL MADRID</h6>
+                        <div class="row mt-4 d-flex justify-content-center">
+                            <div class="cardMatche col-sm-10 d-flex">
+                                <div class="col-sm-3 d-flex flex-column align-items-center ">
+                                    <img src="../images/barca-logo.png" alt="" class="logo-team mb-1"
+                                        style="height: 60px;">
+                                    <h6>BARCLONA</h6>
+                                </div>
+
+                                <div class="col-sm-6 d-flex flex-column align-items-center justify-content-center">
+                                    <h3>MARCH 15</h3>
+                                    <h6 style="color: var(--color1);">22:30</h6>
+                                    <h6>sami-final</h6>
+                                </div>
+
+                                <div class="col-sm-3 d-flex flex-column align-items-center">
+                                    <img src="../images/real-madrid-logo.png" alt="" class="logo-team mb-1"
+                                        style="height: 60px;">
+                                    <h6>REAL MADRID</h6>
+                                </div>
+                            </div>
                         </div>
+
                     </div>
                 </div>
-
-                <div class="row mt-4 d-flex justify-content-center">
-                    <div class="cardMatche col-sm-10 d-flex">
-                        <div class="col-sm-3 d-flex flex-column align-items-center ">
-                            <img src="../images/barca-logo.png" alt="" class="logo-team mb-1" style="height: 60px;">
-                            <h6>BARCLONA</h6>
-                        </div>
-
-                        <div class="col-sm-6 d-flex flex-column align-items-center justify-content-center">
-                            <h3>MARCH 15</h3>
-                            <h6 style="color: var(--color1);">22:30</h6>
-                        </div>
-
-                        <div class="col-sm-3 d-flex flex-column align-items-center">
-                            <img src="../images/real-madrid-logo.png" alt="" class="logo-team mb-1"
-                                style="height: 60px;">
-                            <h6>REAL MADRID</h6>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row mt-4 d-flex justify-content-center">
-                    <div class="cardMatche col-sm-10 d-flex">
-                        <div class="col-sm-3 d-flex flex-column align-items-center ">
-                            <img src="../images/barca-logo.png" alt="" class="logo-team mb-1" style="height: 60px;">
-                            <h6>BARCLONA</h6>
-                        </div>
-
-                        <div class="col-sm-6 d-flex flex-column align-items-center justify-content-center">
-                            <h3>MARCH 15</h3>
-                            <h6 style="color: var(--color1);">22:30</h6>
-                        </div>
-
-                        <div class="col-sm-3 d-flex flex-column align-items-center">
-                            <img src="../images/real-madrid-logo.png" alt="" class="logo-team mb-1"
-                                style="height: 60px;">
-                            <h6>REAL MADRID</h6>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row mt-4 d-flex justify-content-center">
-                    <div class="cardMatche col-sm-10 d-flex">
-                        <div class="col-sm-3 d-flex flex-column align-items-center ">
-                            <img src="../images/barca-logo.png" alt="" class="logo-team mb-1" style="height: 60px;">
-                            <h6>BARCLONA</h6>
-                        </div>
-
-                        <div class="col-sm-6 d-flex flex-column align-items-center justify-content-center">
-                            <h3>MARCH 15</h3>
-                            <h6 style="color: var(--color1);">22:30</h6>
-                        </div>
-
-                        <div class="col-sm-3 d-flex flex-column align-items-center">
-                            <img src="../images/real-madrid-logo.png" alt="" class="logo-team mb-1"
-                                style="height: 60px;">
-                            <h6>REAL MADRID</h6>
-                        </div>
-                    </div>
-                </div>
-
-
-
-
             </div>
         </div>
+        <!-- ====== This design for Leagues compitions (End)======= -->
 
     </main>
 </body>
 
 <script src="../JS/mainLogic.js"></script>
 <script src="../JS/matchInfoLogic.js"></script>
+<script src="../JS/leagueLogic.js"></script>
 <script>
+    getStandingTeams()
+    getStandingScorers()
+    getMatchesLeagues()
 </script>
 
 </html>
