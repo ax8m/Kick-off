@@ -4,7 +4,7 @@ const id = getCurrentId("leagueId")
 var matchDayParam = ""
 
 function getStandingTeams() {
-    const url = `${baseUrl}/competitions/${id}/standings?season=2022`
+    const url = `${baseUrl}/competitions/${id}/standings`
 
     axios.get(url, {
         headers: {
@@ -47,7 +47,64 @@ function getStandingTeams() {
                 document.getElementById("standingTeams").innerHTML += content
             }
         } else {
-            $("#leagueDesign").remove
+            $("#leagueDesign").remove()
+            $("#groups").html("")
+
+            for (let groups of data.standings) {
+                // console.log(groups.group)
+                let content = ""
+
+                for (let standing of groups.table) {
+                    content +=
+                        `
+                    <tr>
+                                <td>${standing.position}</td>
+                                <td>
+                                    <img src="${standing.team.crest}" alt="" style="width: 1.7rem;">
+                                    <span>${standing.team.shortName}</span>
+                                </td>
+                                <td>${standing.playedGames}</td>
+                                <td style="color: greenyellow;">${standing.won}</td>
+                                <td style="color: yellow;">${standing.draw}</td>
+                                <td style="color: red;">${standing.lost}</td>
+                                <td>${standing.goalsFor} : ${standing.goalsAgainst}</td>
+                                <td>${standing.goalDifference}</td>
+                                <td>${standing.points}</td>
+                            </tr>
+                    `
+                    var groupContent = content
+                    // console.log(groupContent)
+
+                    // document.getElementById("standingTeams").innerHTML += groupContent
+                }
+
+                const tableContent = `
+                <div>
+                    <table>
+                        <h4>${groups.group}</h4>
+                        <thead>
+                            <th>#</th>
+                            <th style="width: 30%;">Team</th>
+                            <th>Pl</th>
+                            <th style="color: greenyellow;">W</th>
+                            <th style="color: yellow;">D</th>
+                            <th style="color: red;">L</th>
+                            <th>F : A</th>
+                            <th>GD</th>
+                            <th>Pts</th>
+                        </thead>
+
+                        <tbody id="standingTeams">
+                        ${groupContent}
+                        </tbody>
+
+
+                    </table>
+                </div>
+                `
+                console.log(tableContent)
+                document.getElementById("groups").innerHTML += tableContent
+            }
         }
     })
 }
@@ -89,7 +146,7 @@ function getStandingScorers() {
 
 
 function getMatchesLeagues() {
-    const url = `${baseUrl}/competitions/${id}/matches?matchday=38`
+    const url = `${baseUrl}/competitions/${id}/matches?matchday=3`
 
     axios.get(url, {
         headers: {

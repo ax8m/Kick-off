@@ -75,7 +75,7 @@ th {
     margin: 2.5rem;
 }
 
-#groubs {
+#groups {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 5px;
@@ -83,7 +83,7 @@ th {
 }
 
 @media only screen and (max-width: 768px) {
-    #groubs {
+    #groups {
         grid-template-columns: auto;
     }
 }
