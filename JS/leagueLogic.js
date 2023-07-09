@@ -173,7 +173,7 @@ function getMatchesLeagues() {
 
                         <div class="col-sm-6 d-flex flex-column align-items-center justify-content-center">
                             <h2>${matchStatus(game.status, game.utcDate, game)}</h2>
-                            <h6 style="color:var(--color1);">MATCHDAY : ${game.matchday}  </h6>
+                            <h6 style="color:var(--color1);">${(game.competition.type == "LEAGUE") ? `MATCHDAY : ${game.matchday}` : game.stage}  </h6>
 
                         </div>
 

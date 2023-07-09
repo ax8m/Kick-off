@@ -30,8 +30,8 @@ function getInfoMatch() {
 
                 <div class="col-sm-6 d-flex flex-column align-items-center justify-content-center">
                     <h2>${matchStatus(info.status, info.utcDate, info)}</h2>
-                    <h6 style="color:var(--color1);">MATCHDAY : ${info.season.currentMatchday}</h6>
-                </div>
+                    <h6 style="color:var(--color1);">${(info.competition.type == "LEAGUE") ? `MATCHDAY : ${info.matchday}` : info.stage}  </h6> <span><p>${info.group}</p></span>
+                    </div>
 
                 <div class="col-sm-3 d-flex flex-column align-items-center">
                     <img src="${info.awayTeam.crest}" alt="" class="logo-team mb-1"
