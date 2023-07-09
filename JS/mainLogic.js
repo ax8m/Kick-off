@@ -140,53 +140,56 @@ const token = '848a194d370a42178ed8291ff7755128'
 
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
+// ===== Get matches going to play on current day ===== //
 function getTodaymatches() {
 
     document.getElementById("matches").innerHTML = ''
-    const url = `${baseUrl}/matches?dateFrom=2023-03-10&dateTo=2023-03-14`
+    const url = `${baseUrl}/matches`
+    toggleLoader(true)
     axios.get(url, {
         headers: {
             "X-Auth-Token": token
         }
     }).then((response) => {
+        if (response.data.resultSet.count == 0) {
+            $("#matches").html("<h5 style='text-align: center;opacity: 60%;'><em>There is not matches today</em></h5>")
+        } else {
+            for (let match of response.data.matches) {
 
-        console.log()
-        for (let match of response.data.matches) {
 
+                function matchStatus(status, utcDate) {
+                    // GET DATE & TIME
+                    utcDate = new Date(utcDate)
+                    let date = `${months[utcDate.getMonth()]} ${utcDate.getDate()}`
 
-            function matchStatus(status, utcDate) {
-                // GET DATE & TIME
-                utcDate = new Date(utcDate)
-                let date = `${months[utcDate.getMonth()]} ${utcDate.getDate()}`
+                    // ======== TRY TO IMPROVE THIS Part later ========= START
+                    let ziroH = "";
+                    let ziroM = "";
+                    if (utcDate.getHours() <= 9) { ziroH = "0" }
+                    if (utcDate.getMinutes() <= 9) { ziroM = "0" }
+                    let time = `${ziroH}${utcDate.getHours()}:${ziroM}${utcDate.getMinutes()}`
+                    // ======== TRY TO IMPROVE THIS TAXT ========= END
 
-                // ======== TRY TO IMPROVE THIS Part later ========= START
-                let ziroH = "";
-                let ziroM = "";
-                if (utcDate.getHours() <= 9) { ziroH = "0" }
-                if (utcDate.getMinutes() <= 9) { ziroM = "0" }
-                let time = `${ziroH}${utcDate.getHours()}:${ziroM}${utcDate.getMinutes()}`
-                // ======== TRY TO IMPROVE THIS TAXT ========= END
-
-                if (status == "TIMED") {
-                    return `
+                    if (status == "TIMED") {
+                        return `
                     <h2>${date}</h2>
                     <h4 style="color: var(--color1);">${time}</h4>
                     `
-                } else if (status == "PAUSED") {
-                    return `
+                    } else if (status == "PAUSED") {
+                        return `
                     ${match.score.fullTime.home} - ${match.score.fullTime.away}
                     <h6 style="color: var(--color1);">HALFTIME</h6>
                     `
-                } else {
-                    return `
+                    } else {
+                        return `
                     ${match.score.fullTime.home} - ${match.score.fullTime.away}
                     <h6 style="color: var(--color1);">${match.status}</h6>
                     `
+                    }
                 }
-            }
 
 
-            let content = `
+                let content = `
              <div class="mb-5">
                         <div onclick="window.location = 'League.html?leagueId=${match.competition.id}'" style="cursor: pointer;">
                             <img src="${match.competition.emblem}" alt="" srcset="" class="logo-league">
@@ -216,12 +219,21 @@ function getTodaymatches() {
                 </div >
             </div>
             `
-            document.getElementById("matches").innerHTML += content
+                document.getElementById("matches").innerHTML += content
+            }
         }
+    }).catch((error) => {
+        showAlert(`${error.message}`, "danger")
+    }).finally(() => {
+        toggleLoader(false)
     })
-}
 
-// Dealing with time
+
+}
+// ==================================== =============//
+
+
+// ==== Dealing with time ===== //
 function time() {
     let ziroH = "";
     let ziroM = "";
@@ -229,13 +241,17 @@ function time() {
     if (utcDate.getMinutes() <= 9) { ziroM = "0" }
     let time = `${ziroH}${utcDate.getHours()}:${ziroM}${utcDate.getMinutes()}`
 }
+// ==================================== //
 
-// Moving to match information page
+
+// ===== Moving to match information page =====//
 function MatchClicked(id) {
     window.location = `matchInfo.html?matchId=${id}`
 }
+// ==================================== //
 
-// Get Status of match
+
+// ====== Get Status of match ====== //
 function matchStatus(status, utcDate, variable) {
     // GET DATE & TIME
     utcDate = new Date(utcDate)
@@ -266,8 +282,9 @@ function matchStatus(status, utcDate, variable) {
         `
     }
 }
+// ==================================== //
 
-// GEt all free Leagues
+// ===== GEt all free Leagues ====== //
 function showLeagues(stute) {
     document.getElementById("leagues").innerHTML = ''
 
@@ -285,6 +302,7 @@ function showLeagues(stute) {
     }
 
     const url = `${baseUrl}/competitions`
+    toggleLoader(true)
     axios.get(url, {
         headers: {
             "X-Auth-Token": token
@@ -307,12 +325,49 @@ function showLeagues(stute) {
 
                 document.getElementById("leagues").innerHTML += content
             }
+        }).catch((error) => {
+            if (stute == "show") { showAlert(`${error.message}`, "danger") }
+        }).finally(() => {
+            toggleLoader(false)
         })
 }
+// ==================================== //
 
-// get id of url search
+
+// ===== get id of url search ===== //
 function getCurrentId(paramID) {
     const urlParams = new URLSearchParams(window.location.search)
     const matchId = urlParams.get(paramID)
     return matchId
 }
+// ==================================== //
+
+function toggleLoader(show = true) {
+    if (show) {
+        document.getElementById("loader").style.visibility = 'visible'
+    } else {
+        document.getElementById("loader").style.visibility = 'hidden'
+    }
+}
+
+//  Alert of bootstrap
+function showAlert(alertMessage, type = "success") {
+
+    const alertPlaceholder = document.getElementById('AlertShows')
+
+    const alert = (message, type) => {
+        const wrapper = document.createElement('div')
+        wrapper.innerHTML = [
+            `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+            `   <div>${message}</div>`,
+            '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+            '</div>'
+        ].join('')
+
+        alertPlaceholder.append(wrapper)
+    }
+    alert(alertMessage, type)
+
+
+}
+

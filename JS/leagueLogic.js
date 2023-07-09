@@ -1,21 +1,22 @@
 const id = getCurrentId("leagueId")
-
-// Get standings Teams
-var matchDayParam = ""
-
+let matchDayParam = ""
+let seasonParam = ""
+toggleLoader(true)
+// ===== Get standings Teams ====== //
 function getStandingTeams() {
     const url = `${baseUrl}/competitions/${id}/standings`
 
     axios.get(url, {
         headers: {
             "X-Auth-Token": token
-        },
-        // params: matchDayParam
-
+        }
     }).then((response) => {
         const typeOfCompition = response.data.competition.type
         const data = response.data
-        matchDayParam = data.season.currentMatchday
+        // matchDayParam = data.season.currentMatchday
+        matchDayParam = 5
+        seasonParam = data.filters.season
+        console.log(matchDayParam)
         $("#logoLeaguePage img").attr('src', `${data.competition.emblem}`)
 
 
@@ -24,8 +25,6 @@ function getStandingTeams() {
             $("#standingTeams").html("")
 
             for (let standing of data.standings[0].table) {
-                // console.log(standing)
-
                 let content = `
                 <tr>
                                 <td>${standing.position}</td>
@@ -51,7 +50,6 @@ function getStandingTeams() {
             $("#groups").html("")
 
             for (let groups of data.standings) {
-                // console.log(groups.group)
                 let content = ""
 
                 for (let standing of groups.table) {
@@ -73,9 +71,6 @@ function getStandingTeams() {
                             </tr>
                     `
                     var groupContent = content
-                    // console.log(groupContent)
-
-                    // document.getElementById("standingTeams").innerHTML += groupContent
                 }
 
                 const tableContent = `
@@ -102,14 +97,18 @@ function getStandingTeams() {
                     </table>
                 </div>
                 `
-                console.log(tableContent)
                 document.getElementById("groups").innerHTML += tableContent
             }
         }
+    }).catch((error) => {
+        showAlert(`${error.message}`, "danger")
     })
-}
 
-// Get standing Scroers
+    getMatchesLeagues()
+}
+// ==================================== //
+
+// ===== Get standing Scroers ===== //
 function getStandingScorers() {
     const url = `${baseUrl}/competitions/${id}/scorers`
 
@@ -118,7 +117,7 @@ function getStandingScorers() {
             "X-Auth-Token": token
         },
         params: {
-            season: "2021"
+            // season: seasonParam
         }
     }).then((response) => {
         $("#standingScroer").html("")
@@ -141,18 +140,24 @@ function getStandingScorers() {
             position += 1
             document.getElementById("standingScroer").innerHTML += content
         }
+
+    }).catch((error) => {
+        showAlert(`${error.message}`, "danger")
     })
 }
+// ==================================== //
 
-
+// ====== get matches for specific league ===== //
 function getMatchesLeagues() {
-    const url = `${baseUrl}/competitions/${id}/matches?matchday=3`
-
+    const url = `${baseUrl}/competitions/${id}/matches`
     axios.get(url, {
         headers: {
             "X-Auth-Token": token
         },
-        params: { season: "2021" }
+        params: {
+            // // season: Number(seasonParam),
+            // matchday: matchDay
+        }
 
     }).then((response) => {
         $("#compitionMatchesCards").html("")
@@ -168,6 +173,8 @@ function getMatchesLeagues() {
 
                         <div class="col-sm-6 d-flex flex-column align-items-center justify-content-center">
                             <h2>${matchStatus(game.status, game.utcDate, game)}</h2>
+                            <h6 style="color:var(--color1);">MATCHDAY : ${game.matchday}  </h6>
+
                         </div>
 
                         <div class="col-sm-3 d-flex flex-column align-items-center">
@@ -181,7 +188,14 @@ function getMatchesLeagues() {
             document.getElementById("compitionMatchesCards").innerHTML += content
 
         }
+    }).catch((error) => {
+        showAlert(`${error.message}`, "danger")
+    }).finally(() => {
+        toggleLoader(false)
     })
 }
+console.log(matchDayParam)
+// ==================================== //
+
 
 

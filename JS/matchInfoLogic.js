@@ -1,8 +1,12 @@
-
-
+// ===== GET Matchess informations ===== //
+var homeTeamCrest = ""
+var awayTeamCrest = ""
 function getInfoMatch() {
+    // toggleLoader(true)
     const id = getCurrentId("matchId")
-    document.getElementById("main").innerHTML = " "
+    document.getElementById("matchResult").innerHTML = " "
+    document.getElementById("infoMatch").innerHTML = " "
+    $("#infoMatch")
     const url = `${baseUrl}/matches/${id}`
     axios.get(url, {
         headers: {
@@ -11,17 +15,9 @@ function getInfoMatch() {
     }).then((response) => {
         let info = response.data
 
-        function checkRefree() {
-            let check = (info.referees !== "") ? "Hi" : "hell"
-            return check
-            // if (info.referees !== []) {
-            //     return `<p style="color: var(--color1);">null </p>`
-            //     // return "HI"
-            // } else {
-            //     return `<p style="color: var(--color1);">${info.referees[0].name}<span>((${info.referees[0].nationality}))</span></p>`
-            //     // return "Hello"
-            // }
-        }
+        homeTeamCrest = info.homeTeam.crest
+        awayTeamCrest = info.awayTeam.crest
+
         let content =
             `
         <!-- Match Result -->
@@ -102,19 +98,25 @@ function getInfoMatch() {
             </div>
         </div>
             `
-        document.getElementById("main").innerHTML = content
+        document.getElementById("matchResult").innerHTML = content
 
 
 
+    }).catch((error) => {
+        showAlert(`${error.message}`, "danger")
     })
 
 
 }
+// ==================================== //
 
+// ===== Get Confrontations between teams when the user click on match card ===== //
 function getInfoHead2Head() {
 
     const id = getCurrentId("matchId")
     const url = `${baseUrl}/matches/${id}/head2head`
+    toggleLoader(true)
+
     axios.get(url, {
         headers: {
             "X-Auth-Token": token
@@ -134,7 +136,7 @@ function getInfoHead2Head() {
 
                 <div class="d-flex  justify-content-around">
                     <div class="col-sm-3 d-flex  align-items-center justify-content-center">
-                        <img src="${info.matches[0].homeTeam.crest}" alt="" class="logo-team mb-1" style="height: 60px;">
+                        <img src="${homeTeamCrest}" alt="" class="logo-team mb-1" style="height: 60px;">
                     </div>
 
                     <div class="d-flex  flex-column justify-content-around " style="text-align: center;">
@@ -143,7 +145,7 @@ function getInfoHead2Head() {
                     </div>
 
                     <div class="col-sm-3 d-flex  align-items-center justify-content-center">
-                        <img src="${info.matches[0].awayTeam.crest}" alt="" class="logo-team mb-1" style="height: 60px;">
+                        <img src="${awayTeamCrest}" alt="" class="logo-team mb-1" style="height: 60px;">
 
                     </div>
                 </div>
@@ -180,36 +182,12 @@ function getInfoHead2Head() {
         document.getElementById("headTOhead").innerHTML = content
 
 
+    }).catch((error) => {
+        showAlert(`${error.message}`, "danger")
+    }).finally(() => {
+        toggleLoader(false)
     })
 }
+// ==================================== //
 
-function matchStatus(status, utcDate, variable) {
-    // GET DATE & TIME
-    utcDate = new Date(utcDate)
-    let date = `${months[utcDate.getMonth()]} ${utcDate.getDate()} `
 
-    // ======== TRY TO IMPROVE THIS Part later ========= START
-    let ziroH = "";
-    let ziroM = "";
-    if (utcDate.getHours() <= 9) { ziroH = "0" }
-    if (utcDate.getMinutes() <= 9) { ziroM = "0" }
-    let time = `${ziroH}${utcDate.getHours()}:${ziroM}${utcDate.getMinutes()} `
-    // ======== TRY TO IMPROVE THIS TAXT ========= END
-
-    if (status == "TIMED") {
-        return `
-                < h3 > ${date}</h3 >
-                    <h4 style="color: var(--color1);">${time}</h4>
-            `
-    } else if (status == "PAUSED") {
-        return `
-        ${variable.score.fullTime.home} - ${variable.score.fullTime.away}
-            <h6 style="color: var(--color1);">HALFTIME</h6>
-            `
-    } else {
-        return `
-        ${variable.score.fullTime.home} - ${variable.score.fullTime.away}
-            <h6 style="color: var(--color1);">${variable.status}</h6>
-            `
-    }
-}

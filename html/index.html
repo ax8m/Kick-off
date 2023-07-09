@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <link rel="icon" type="image/x-icon" href="../images/icons8-soccer-64.png">
     <link rel="stylesheet" href="../css/style.css">
 
 
@@ -20,10 +21,17 @@
 
     <!-- Axios -->
     <script src="../node_modules/axios/dist/axios.min.js"></script>
+
+    <!-- Jquery -->
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
     <!--// Library //-->
 </head>
 
 <body>
+    <!-- ======== Alert ============ -->
+    <div id="AlertShows" class="" style=" width: 90%;position: fixed; z-index: 99999;">
+    </div>
+    <!-- ============================ -->
     <div class="container">
         <header>
             <div class="nav">
@@ -317,6 +325,18 @@
         <!--// Modal List //-->
 
     </div>
+
+    <!-- The loader -->
+    <div id="loader"
+        style="background: rgba(128, 128, 128, 0.45); position: fixed; inset: 0px; margin: auto; display: flex; justify-content: center; align-items: center; z-index: 9999; width: 80px; height: 80px; border-radius: 15px; visibility: hidden;">
+        <div class="lds-facebook">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+
 </body>
 
 

@@ -1,12 +1,31 @@
 main {
     margin: auto !important;
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+}
+
+@media only screen and (max-width: 768px) {
+    main {
+        grid-template-columns: 1fr;
+    }
+
+    #infoMatch {
+        width: 20rem;
+        margin: 2rem;
+    }
+
+    #headTOhead {
+        width: 20rem;
+        margin: 2rem;
+    }
 }
 
 #infoMatch {
-    /* background-color: blue; */
-    width: 30%;
+    width: 25rem;
     display: flex;
     flex-direction: column;
+    margin: 2rem;
 }
 
 .cardsInfo {
@@ -15,5 +34,6 @@ main {
 }
 
 #headTOhead {
-    width: 50%;
+    width: 25rem;
+    margin: 2rem;
 }
